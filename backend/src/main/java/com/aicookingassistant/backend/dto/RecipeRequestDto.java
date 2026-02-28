@@ -13,5 +13,7 @@ public class RecipeRequestDto {
     private List<String> ingredients;
     private String cuisine;
     private String foodType;
+    private String dietType;     
+    private boolean healthier; 
 
 }

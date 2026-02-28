@@ -19,33 +19,41 @@ public class RecipeService {
     public RecipeResponseDto suggestRecipes(RecipeRequestDto request) {
 
     String prompt = """
-        You are a professional chef.
+    You are a professional chef.
 
-        The user has these ingredients: %s.
-        Cuisine preference: %s.
-        Meal type: %s.
+    The user has these ingredients: %s.
+    Cuisine preference: %s.
+    Meal type: %s.
+    Diet preference: %s.
+    Make it healthier: %s.
 
-        Return exactly 3 dishes in JSON format like this:
+    Suggest exactly 3 dishes.
 
+    Return strictly in JSON format:
+
+    {
+    "recipes": [
         {
-          "recipes": [
-            {
-              "name": "",
-              "shortRecipe": "",
-              "missingIngredients": []
-            }
-          ]
+        "name": "",
+        "shortRecipe": "",
+        "missingIngredients": []
         }
+    ]
+    }
 
-        Rules:
-        - Keep shortRecipe concise (4-5 steps).
-        - missingIngredients should be realistic and home friendly.
-        - Return ONLY JSON. No explanation.
-        """.formatted(
+    Rules:
+    - If diet is veg, do not include meat or egg.
+    - If healthier is true, reduce oil, suggest baking/steaming/grilling.
+    - Keep shortRecipe concise (4-5 steps).
+    - missingIngredients should improve taste or nutrition.
+    - Return ONLY JSON.
+    """.formatted(
             String.join(", ", request.getIngredients()),
             request.getCuisine(),
-            request.getFoodType()
-        );
+            request.getFoodType(),
+            request.getDietType(),
+            request.isHealthier()
+    );
 
     String aiResponse = aiService.generateRecipes(prompt);
 
