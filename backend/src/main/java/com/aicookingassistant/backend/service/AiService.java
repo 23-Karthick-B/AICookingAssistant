@@ -20,7 +20,7 @@ public class AiService {
 
     @Value("${ai.openrouter.token}")
     private String apiToken;
-
+        
     public String generateRecipes(String prompt) {
 
         HttpHeaders headers = new HttpHeaders();
