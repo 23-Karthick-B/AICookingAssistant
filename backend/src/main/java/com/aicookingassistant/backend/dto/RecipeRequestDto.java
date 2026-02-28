@@ -7,6 +7,6 @@ import lombok.Data;
 @Data
 public class RecipeRequestDto {
     private List<String> ingredients;
-    private String cusine;
+    private String cuisine;
 
 }

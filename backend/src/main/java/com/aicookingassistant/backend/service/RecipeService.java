@@ -16,7 +16,7 @@ public class RecipeService {
     private final AiService aiService;
 
     public RecipeResponseDto suggestRecipes(RecipeRequestDto request){
-        String prompt = "Suggest the best 5 dishes in "+ request.getCusine() 
+        String prompt = "Suggest the best 5 dishes in "+ request.getCuisine() 
         + "with the following ingredients"+ String.join(",",request.getIngredients());
 
         String aiResponse = aiService.generateRecipes(prompt);
