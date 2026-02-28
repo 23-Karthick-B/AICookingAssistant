@@ -6,5 +6,5 @@ import lombok.Data;
 
 @Data
 public class RecipeResponseDto {
-    private List<String> recipe;
+    private List<RecipeItem> recipes;
 }
