@@ -1,5 +1,10 @@
 package com.aicookingassistant.backend.dto;
 
-public class RecipeResponseDto {
+import java.util.List;
 
+import lombok.Data;
+
+@Data
+public class RecipeResponseDto {
+    private List<String> recipe;
 }

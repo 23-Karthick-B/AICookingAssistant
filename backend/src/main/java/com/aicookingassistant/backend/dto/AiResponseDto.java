@@ -1,5 +1,8 @@
 package com.aicookingassistant.backend.dto;
 
-public class AiResponseDto {
+import lombok.Data;
 
+@Data
+public class AiResponseDto {
+    private String content;
 }
