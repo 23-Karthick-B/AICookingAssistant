@@ -7,6 +7,7 @@ import com.aicookingassistant.backend.dto.RecipeRequestDto;
 import com.aicookingassistant.backend.dto.RecipeResponseDto;
 import com.aicookingassistant.backend.service.RecipeService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,7 +25,7 @@ public class RecipeController {
     private final RecipeService recipeService;
 
     @PostMapping("/suggest")
-    public RecipeResponseDto suggestRecipes(@RequestBody RecipeRequestDto request) {
+    public RecipeResponseDto suggestRecipes(@Valid @RequestBody RecipeRequestDto request) {
         return recipeService.suggestRecipes(request);
     }
     

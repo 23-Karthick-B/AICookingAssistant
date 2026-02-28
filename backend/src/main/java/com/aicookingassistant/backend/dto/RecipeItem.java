@@ -8,5 +8,7 @@ import lombok.Data;
 public class RecipeItem {
     private String name;
     private String shortRecipe;
+    private String difficulty;
+    private String cookingTime; 
     private List<String> missingIngredients;
 }
