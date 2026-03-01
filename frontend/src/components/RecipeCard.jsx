@@ -1,23 +1,31 @@
 export default function RecipeCard({ recipe }) {
   return (
-    <div className="card">
+    <div className="recipe-card">
+
       <div className="card-header">
         <h3>{recipe.name}</h3>
-        <span className={`badge ${recipe.difficulty.toLowerCase()}`}>
+        <span className={`badge ${recipe.difficulty?.toLowerCase()}`}>
           {recipe.difficulty}
         </span>
       </div>
 
-      <p className="time">⏱ {recipe.cookingTime}</p>
+      <div className="time">
+        ⏱ {recipe.cookingTime}
+      </div>
 
-      <p>{recipe.shortRecipe}</p>
+      <p className="recipe-steps">{recipe.shortRecipe}</p>
 
-      <h4>Missing Ingredients</h4>
-      <ul>
-        {recipe.missingIngredients.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
+      <div className="missing-section">
+        <h4>Missing Ingredients</h4>
+        <div className="missing-chips">
+          {recipe.missingIngredients?.map((item, index) => (
+            <span key={index} className="missing-chip">
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
+
     </div>
   );
 }
