@@ -1,11 +1,13 @@
 export default function Header() {
   return (
-    <div className="hero">
-      <div className="chef-icon">👨‍🍳</div>
-      <h1 className="title">AI Cooking Assistant</h1>
-      <p className="subtitle">
-        Turn simple ingredients into delicious meals.
-      </p>
+    <div className="hero-compact">
+      <div className="hero-content">
+        <div className="logo">👨‍🍳</div>
+        <div>
+          <h1>AI Cooking Assistant</h1>
+          <p>Smart recipes from ingredients you already have</p>
+        </div>
+      </div>
     </div>
   );
 }
