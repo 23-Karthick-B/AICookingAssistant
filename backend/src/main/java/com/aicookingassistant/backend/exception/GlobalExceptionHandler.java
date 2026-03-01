@@ -42,5 +42,15 @@ public class GlobalExceptionHandler {
                 .badRequest()
                 .body(Map.of("error", message));
     }
+    @ExceptionHandler(InvalidIngredientException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidIngredient(InvalidIngredientException ex) {
+
+        ErrorResponse error = new ErrorResponse(
+                ex.getMessage(),
+                HttpStatus.BAD_REQUEST.value()
+        );
+
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
 
 }
