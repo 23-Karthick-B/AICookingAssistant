@@ -24,6 +24,7 @@ export default function RecipeForm({ setRecipes, setLoading }) {
   const [dietType, setDietType] = useState("");
   const [difficulty, setDifficulty] = useState("");
   const [healthier, setHealthier] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const isFormValid =
   ingredients.length > 0 &&
   cuisine &&
@@ -51,18 +52,11 @@ export default function RecipeForm({ setRecipes, setLoading }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (ingredients.length === 0) {
-      alert("Please add at least one ingredient");
-      return;
-    }
-    if (!cuisine || !foodType || !dietType || !difficulty) {
-      alert("Please fill all required fields");
-      return;
-    }
+    setErrorMessage("");
     setLoading(true);
 
     const data = {
-      ingredients,   // already array
+      ingredients,
       cuisine,
       foodType,
       dietType,
@@ -74,7 +68,8 @@ export default function RecipeForm({ setRecipes, setLoading }) {
       const result = await fetchRecipes(data);
       setRecipes(result.recipes);
     } catch (error) {
-      alert("Failed to fetch recipes");
+      setRecipes([]);
+      setErrorMessage(error.message);
     }
 
     setLoading(false);
@@ -204,8 +199,12 @@ export default function RecipeForm({ setRecipes, setLoading }) {
             <span className="slider"></span>
           </label>
         </div>
+        {errorMessage && (
+          <div className="error-box">
+            ⚠ {errorMessage}
+          </div>
+        )}
         
-
         <button type="submit" disabled={!isFormValid}>
           Suggest Recipes
         </button>

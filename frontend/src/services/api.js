@@ -1,4 +1,4 @@
-export const fetchRecipes = async (data) => {
+export async function fetchRecipes(data) {
   const response = await fetch("http://localhost:8080/api/recipe/suggest", {
     method: "POST",
     headers: {
@@ -7,9 +7,11 @@ export const fetchRecipes = async (data) => {
     body: JSON.stringify(data)
   });
 
+  const result = await response.json();
+
   if (!response.ok) {
-    throw new Error("Something went wrong");
+    throw new Error(result.error || "Something went wrong");
   }
 
-  return response.json();
-};
+  return result;
+}
