@@ -412,3 +412,96 @@ button:disabled {
   border-radius: 8px;
   font-weight: 500;
 }
+
+
+/* Overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Compact Card */
+.modal-card {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  width: 420px;
+  max-width: 92%;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+/* Smooth compact drop animation */
+.slide-down {
+  animation: dropDown 3.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes dropDown {
+  0% {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-card h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 18px;
+}
+
+.modal-card ul {
+  text-align: left;
+  font-size: 14px;
+  margin: 15px 0 25px;
+  padding-left: 18px;
+}
+
+.modal-card li {
+  margin-bottom: 6px;
+}
+
+.start-btn {
+  background: linear-gradient(135deg, #c2410c, #ea580c);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.start-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(194, 65, 12, 0.35);
+}
+
+.app-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.form {
+  padding: 25px;
+}
+
+.row {
+  gap: 16px;
+  margin-bottom: 14px;
+}
