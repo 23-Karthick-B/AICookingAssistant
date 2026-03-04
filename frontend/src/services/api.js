@@ -1,5 +1,7 @@
+const API_BASE = process.env.REACT_APP_API_URL;
+
 export async function fetchRecipes(data) {
-  const response = await fetch("http://localhost:8080/api/recipe/suggest", {
+  const response = await fetch(`${API_BASE}/api/recipe/suggest`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
