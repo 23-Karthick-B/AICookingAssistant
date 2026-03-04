@@ -18,7 +18,7 @@ public class AiService {
     @Value("${ai.openrouter.url}")
     private String apiUrl;
 
-    @Value("${ai.openrouter.token}")
+    @Value("${ai.api.key}")
     private String apiToken;
         
     public String generateRecipes(String prompt) {
