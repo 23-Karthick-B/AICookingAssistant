@@ -57,6 +57,8 @@ An AI-powered cooking assistant that generates recipes, suggests meals, and prov
 {
   "ingredients": ["chicken", "rice", "onion"]
 }
+**Response**
+``` json
 {
   "recipeName": "Chicken Fried Rice",
   "ingredients": [
@@ -72,6 +74,8 @@ An AI-powered cooking assistant that generates recipes, suggests meals, and prov
     "Mix rice and add soy sauce"
   ]
 }
+
+### Flow
 Frontend (Vercel)
         ↓
 REST API (Spring Boot - Render)
@@ -80,7 +84,7 @@ AI Processing Layer
         ↓
 Response (Recipe + Steps)
 
-👨‍💻 Author
+###Author
 
 Karthick
 GitHub: https://github.com/23-Karthick-B
