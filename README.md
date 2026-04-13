@@ -81,6 +81,4 @@ An AI-powered cooking assistant that generates recipes, suggests meals, and prov
 Frontend (Vercel) -> REST API (Spring Boot - Render) -> AI Processing Layer -> Response (Recipe + Steps)
 
 Author
-
-Karthick
-GitHub: https://github.com/23-Karthick-B
+Karthick B
