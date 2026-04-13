@@ -74,7 +74,8 @@ An AI-powered cooking assistant that generates recipes, suggests meals, and prov
     "Add chicken and cook thoroughly",
     "Mix rice and add soy sauce"
   ]
-}```
+}
+```
 
 ### Flow
 Frontend (Vercel)
