@@ -30,8 +30,7 @@ An AI-powered cooking assistant that generates recipes, suggests meals, and prov
 - Maven  
 
 ### Frontend
-- JavaScript  
-- HTML, CSS  
+- React js
 
 ### Deployment
 - Vercel (Frontend)  
