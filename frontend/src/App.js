@@ -1,48 +1,56 @@
-import { useState } from "react";
-import Header from "./components/Header";
-import RecipeForm from "./components/RecipeForm";
-import RecipeCard from "./components/RecipeCard";
-import WelcomeModal from "./components/WelcomeModal";
+import { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import HomePage from "./pages/HomePage";
+import CreateRecipePage from "./pages/CreateRecipePage";
+import RecipeResultsPage from "./pages/RecipeResultsPage";
+import RecipeDetailsPage from "./pages/RecipeDetailsPage";
+import FavoritesPage from "./pages/FavoritesPage";
+import CookingModePage from "./pages/CookingModePage";
 import "./style.css";
 
-function App() {
+function ScrollToTop() {
+  const { pathname } = useLocation();
 
-  const [showWelcome, setShowWelcome] = useState(true);
-  const [recipes, setRecipes] = useState([]);
-  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    if (typeof window !== "undefined" && typeof window.scrollTo === "function") {
+      try {
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      } catch (error) {
+        window.scrollTo(0, 0);
+      }
+    }
+  }, [pathname]);
 
+  return null;
+}
+
+function AppLayout() {
   return (
-    <>
-      {/* Welcome Modal */}
-      {showWelcome && (
-        <WelcomeModal onClose={() => setShowWelcome(false)} />
-      )}
+    <div className="app-wrapper">
+      <ScrollToTop />
+      <Navbar />
+      <main className="app-main">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/create" element={<CreateRecipePage />} />
+          <Route path="/recipes" element={<RecipeResultsPage />} />
+          <Route path="/recipes/:id" element={<RecipeDetailsPage />} />
+          <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path="/cook/:id" element={<CookingModePage />} />
+        </Routes>
+      </main>
+      <Footer />
+    </div>
+  );
+}
 
-      <div className="app-container">
-        <Header />
-
-        {/* Pass props properly */}
-        <RecipeForm 
-          setRecipes={setRecipes} 
-          setLoading={setLoading} 
-        />
-
-        {/* Loading message */}
-        {loading && (
-          <p className="loading">
-            Cooking something delicious... 🔥
-          </p>
-        )}
-
-        {/* Recipe Results */}
-        <div className="grid">
-          {recipes.map((recipe, index) => (
-            <RecipeCard key={index} recipe={recipe} />
-          ))}
-        </div>
-
-      </div>
-    </>
+function App() {
+  return (
+    <Router>
+      <AppLayout />
+    </Router>
   );
 }
 
